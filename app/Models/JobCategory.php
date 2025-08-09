@@ -10,6 +10,13 @@ class JobCategory extends BaseModel
     // Relationships
     public function jobPosts()
     {
-        return $this->belongsToMany(JobPost::class, 'job_categories_job_posts', 'job_category_id', 'job_post_id');
+        return $this->belongsToMany(JobPost::class, 'job_post_categories', 'job_category_id', 'job_post_id')
+                    ->withPivot('type', 'required_count', 'description', 'requirements', 'benefits')
+                    ->withTimestamps();
+    }
+
+    public function jobPostCategories()
+    {
+        return $this->hasMany(JobPostCategory::class);
     }
 }

@@ -16,8 +16,14 @@ return new class extends Migration
             $table->string("name");
             $table->string("email");
             $table->string("phone");
-            $table->string("website");
-            $table->string("address");
+            $table->string("website")->nullable();
+            $table->string("logo")->nullable();
+            $table->text("address");
+            $table->text("description")->nullable();
+            $table->string("company_type")->nullable();
+            $table->string("business_sector")->nullable();
+            $table->foreignUuid("parent_company_id")->nullable()->references("id")->on("companies");
+            $table->boolean("is_active")->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

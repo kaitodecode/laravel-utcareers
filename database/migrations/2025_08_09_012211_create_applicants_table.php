@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('applicants', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->references('id')->on('users');
-            $table->foreignUuid('job_id')->references('id')->on('job_posts');
+            $table->foreignUuid('job_post_category_id')->references('id')->on('job_post_categories');
             $table->enum('status', ['pending', 'selection', 'accepted', 'rejected'])->default('pending');
             $table->string("cv");
             $table->string("national_identity_card");

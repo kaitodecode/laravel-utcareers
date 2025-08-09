@@ -4,7 +4,18 @@ namespace App\Models;
 
 class JobPost extends BaseModel
 {
-    // Relationships
+
+    protected $fillable = [
+        'company_id',
+        'title',
+        'thumbnail',
+        'status'
+    ];
+
+    protected $casts = [
+        //
+    ];
+
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -12,16 +23,28 @@ class JobPost extends BaseModel
 
     public function jobCategories()
     {
-        return $this->belongsToMany(JobCategory::class, 'job_categories_job_posts', 'job_post_id', 'job_category_id');
+        return $this->belongsToMany(JobCategory::class, 'job_post_categories', 'job_post_id', 'job_category_id')
+                    ->withPivot('type', 'required_count', 'description', 'requirements', 'benefits')
+                    ->withTimestamps();
+    }
+
+    public function jobPostCategories()
+    {
+        return $this->hasMany(JobPostCategory::class);
     }
 
     public function applicants()
     {
-        return $this->hasMany(Applicant::class, 'job_id');
+        return $this->hasManyThrough(Applicant::class, JobPostCategory::class, 'job_post_id', 'job_post_category_id');
     }
 
     public function selections()
     {
-        return $this->hasMany(Selection::class, 'job_id');
+        return $this->hasManyThrough(Selection::class, JobPostCategory::class, 'job_post_id', 'job_post_category_id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
     }
 }
