@@ -42,19 +42,19 @@ class Selection extends BaseModel
         return $query->where('status', $status);
     }
 
-    public function scopePassed($query)
+    public function scopeAccepted($query)
     {
-        return $query->where('status', 'passed');
+        return $query->where('status', 'accepted');
     }
 
-    public function scopeFailed($query)
+    public function scopeRejected($query)
     {
-        return $query->where('status', 'failed');
+        return $query->where('status', 'rejected');
     }
 
-    public function scopeInProgress($query)
+    public function scopePending($query)
     {
-        return $query->where('status', 'in_progress');
+        return $query->where('status', 'pending');
     }
 
     public function scopePortfolioStage($query)
@@ -76,22 +76,20 @@ class Selection extends BaseModel
     public function getStatusBadgeAttribute()
     {
         $badges = [
-            'passed' => 'success',
-            'failed' => 'danger',
-            'in_progress' => 'warning',
-            'pending' => 'secondary'
+            'accepted' => 'bg-success',
+            'rejected' => 'bg-danger',
+            'pending' => 'bg-warning'
         ];
 
-        return $badges[$this->status] ?? 'secondary';
+        return $badges[$this->status] ?? 'bg-secondary';
     }
 
     public function getStatusLabelAttribute()
     {
         $labels = [
-            'passed' => 'Lulus',
-            'failed' => 'Tidak Lulus',
-            'in_progress' => 'Sedang Berlangsung',
-            'pending' => 'Menunggu'
+            'accepted' => 'Diterima',
+            'rejected' => 'Ditolak',
+            'pending' => 'Menunggu Review'
         ];
 
         return $labels[$this->status] ?? 'Unknown';

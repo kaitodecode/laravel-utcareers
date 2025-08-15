@@ -36,6 +36,8 @@ class Applicant extends BaseModel
         return $this->hasMany(Selection::class);
     }
 
+
+
     // Scopes
     public function scopeByStatus($query, $status)
     {

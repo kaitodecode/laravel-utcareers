@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Applicant;
 use App\Models\User;
 use App\Models\JobPostCategory;
+use App\Models\Selection;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +16,7 @@ class ApplicantSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create users with 'pelamar' role first - focused on heavy equipment, mining, and IT professionals
+        // Create users with 'pelamar' role first
         $users = [];
         $userData = [
             [
@@ -28,197 +29,130 @@ class ApplicantSeeder extends Seeder
                 'description' => 'Heavy Equipment Mechanic dengan 8 tahun pengalaman maintenance Caterpillar excavator dan bulldozer. Bersertifikat Caterpillar Service Technician.'
             ],
             [
-                'name' => 'Indira Sari Dewi',
-                'email' => 'indira.dewi@email.com',
+                'name' => 'Sari Dewi',
+                'email' => 'sari.dewi@email.com', 
                 'phone' => '+62-813-4567-8901',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Balikpapan Baru No. 123, Balikpapan, Kalimantan Timur 76127',
-                'description' => 'Mining Engineer lulusan ITB dengan pengalaman 4 tahun di operasi tambang batubara. Menguasai MineSight dan Surpac untuk mine planning.'
+                'address' => 'Jl. Sudirman No. 123, Jakarta Pusat 10220',
+                'description' => 'Software Developer dengan 5 tahun pengalaman dalam pengembangan aplikasi web menggunakan Laravel dan React.'
             ],
             [
-                'name' => 'Rizky Pratama Putra',
-                'email' => 'rizky.pratama@email.com',
-                'phone' => '+62-814-5678-9012',
+                'name' => 'Budi Santoso',
+                'email' => 'budi.santoso@email.com',
+                'phone' => '+62-814-5678-9012', 
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Cyber 2 Tower No. 88, Jakarta Selatan 12950',
-                'description' => 'IoT Engineer dengan expertise dalam embedded systems dan cloud computing. Berpengalaman mengembangkan solusi digitalisasi untuk industri manufaktur.'
+                'address' => 'Jl. Gatot Subroto No. 456, Jakarta Selatan 12930',
+                'description' => 'Mining Engineer dengan 10 tahun pengalaman dalam operasi tambang batubara dan mineral.'
             ],
             [
-                'name' => 'Sari Wulandari',
-                'email' => 'sari.wulandari@email.com',
+                'name' => 'Rina Kartika',
+                'email' => 'rina.kartika@email.com',
                 'phone' => '+62-815-6789-0123',
                 'password' => bcrypt('password123'),
-                'role' => 'pelamar',
-                'address' => 'Jl. Veteran No. 234, Gresik, Jawa Timur 61122',
-                'description' => 'SAP Consultant dengan sertifikasi SAP S/4HANA MM dan PP. Pengalaman 6 tahun implementasi ERP di industri manufaktur dan semen.'
+                'role' => 'pelamar', 
+                'address' => 'Jl. HR Rasuna Said No. 789, Jakarta Selatan 12940',
+                'description' => 'Data Analyst dengan 4 tahun pengalaman dalam analisis data dan business intelligence.'
             ],
             [
-                'name' => 'Bambang Sutrisno',
-                'email' => 'bambang.sutrisno@email.com',
+                'name' => 'Ahmad Fauzi',
+                'email' => 'ahmad.fauzi@email.com',
                 'phone' => '+62-816-7890-1234',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Soekarno Hatta Km. 25, Samarinda, Kalimantan Timur 75124',
-                'description' => 'Safety & Health Officer dengan sertifikat Ahli K3 Umum dan NEBOSH. Pengalaman 10 tahun di industri pertambangan dan konstruksi.'
+                'address' => 'Jl. Thamrin No. 321, Jakarta Pusat 10230',
+                'description' => 'Mechanical Engineer dengan 7 tahun pengalaman dalam maintenance dan repair heavy machinery.'
             ],
             [
-                'name' => 'Dewi Kartika Sari',
-                'email' => 'dewi.kartika@email.com',
+                'name' => 'Maya Putri',
+                'email' => 'maya.putri@email.com',
                 'phone' => '+62-817-8901-2345',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Kawasan Industri Pulogadung, Jakarta Timur 13920',
-                'description' => 'Mechanical Engineer dengan spesialisasi hydraulic systems dan product design. Menguasai SolidWorks dan AutoCAD untuk engineering design.'
+                'address' => 'Jl. Kebon Jeruk No. 567, Jakarta Barat 11530',
+                'description' => 'Human Resource Manager dengan 6 tahun pengalaman dalam recruitment dan employee relations.'
             ],
             [
-                'name' => 'Eko Prasetyo',
-                'email' => 'eko.prasetyo@email.com',
+                'name' => 'Dedi Kurniawan',
+                'email' => 'dedi.kurniawan@email.com',
                 'phone' => '+62-818-9012-3456',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Pangeran Jayakarta No. 200, Jakarta Pusat 10730',
-                'description' => 'Supply Chain Manager dengan pengalaman 12 tahun di industri otomotif dan alat berat. Expert dalam inventory optimization dan vendor management.'
+                'address' => 'Jl. Pemuda No. 789, Jakarta Timur 13220',
+                'description' => 'Electrical Engineer dengan 9 tahun pengalaman dalam industrial automation dan power systems.'
             ],
             [
-                'name' => 'Fitri Handayani',
-                'email' => 'fitri.handayani@email.com',
+                'name' => 'Nina Safitri',
+                'email' => 'nina.safitri@email.com',
                 'phone' => '+62-819-0123-4567',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Rasuna Said No. 100, Jakarta Selatan 12950',
-                'description' => 'Field Service Engineer dengan pengalaman commissioning dan troubleshooting alat berat di site tambang. Mobile ke seluruh Indonesia.'
+                'address' => 'Jl. Hayam Wuruk No. 234, Jakarta Pusat 10120',
+                'description' => 'Marketing Manager dengan 7 tahun pengalaman dalam digital marketing dan brand development.'
             ],
             [
-                'name' => 'Hendra Gunawan',
-                'email' => 'hendra.gunawan@email.com',
+                'name' => 'Rudi Hermawan',
+                'email' => 'rudi.hermawan@email.com',
                 'phone' => '+62-820-1234-5678',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Sudirman No. 300, Palembang, Sumatera Selatan 30126',
-                'description' => 'Geologist dengan pengalaman eksplorasi mineral dan evaluasi deposit batubara. Menguasai software geologi dan GIS mapping.'
+                'address' => 'Jl. Mangga Dua No. 345, Jakarta Utara 14430',
+                'description' => 'Supply Chain Manager dengan 8 tahun pengalaman dalam logistics dan inventory management.'
             ],
             [
-                'name' => 'Lisa Permata Sari',
-                'email' => 'lisa.permata@email.com',
+                'name' => 'Lisa Anggraini',
+                'email' => 'lisa.anggraini@email.com',
                 'phone' => '+62-821-2345-6789',
                 'password' => bcrypt('password123'),
                 'role' => 'pelamar',
-                'address' => 'Jl. Teknologi No. 150, Bandung, Jawa Barat 40132',
-                'description' => 'Data Analyst dengan fokus pada predictive maintenance dan industrial IoT. Menguasai Python, R, dan machine learning untuk analisis data operasional.'
+                'address' => 'Jl. Pluit Raya No. 678, Jakarta Utara 14450',
+                'description' => 'Financial Analyst dengan 5 tahun pengalaman dalam investment banking dan financial modeling.'
             ]
         ];
 
+        // Create users and store them
         foreach ($userData as $data) {
             $users[] = User::create($data);
         }
 
+        // Get all job post categories
         $jobPostCategories = JobPostCategory::all();
+        
+        // Define selection stages and statuses
+        $stages = ['portfolio', 'interview', 'medical_checkup'];
+        $statuses = ['pending', 'in_review', 'accepted', 'rejected'];
 
-        // Create applications with more realistic applications based on job types
-        $applications = [
-            // Heavy Equipment Mechanic applications
-            [
-                'user_id' => $users[0]->id, // Agus Setiawan (Heavy Equipment Mechanic)
-                'job_post_category_id' => $jobPostCategories->skip(0)->first()->id,
-                'status' => 'selection',
-                'cv' => 'cv/agus_setiawan_mechanic_cv.pdf',
-                'national_identity_card' => 'ktp/agus_setiawan_ktp.jpg'
-            ],
-            [
-                'user_id' => $users[7]->id, // Fitri Handayani (Field Service Engineer)
-                'job_post_category_id' => $jobPostCategories->skip(1)->first()->id,
-                'status' => 'accepted',
-                'cv' => 'cv/fitri_handayani_field_engineer_cv.pdf',
-                'national_identity_card' => 'ktp/fitri_handayani_ktp.jpg'
-            ],
+        // For each user, create at least 2 applicants
+        foreach ($users as $user) {
+            // Create 2-3 applicants for each user
+            $applicantCount = rand(2, 3);
             
-            // Mining Engineer applications
-            [
-                'user_id' => $users[1]->id, // Indira Sari Dewi (Mining Engineer)
-                'job_post_category_id' => $jobPostCategories->skip(2)->first()->id,
-                'status' => 'pending',
-                'cv' => 'cv/indira_dewi_mining_engineer_cv.pdf',
-                'national_identity_card' => 'ktp/indira_dewi_ktp.jpg'
-            ],
-            [
-                'user_id' => $users[8]->id, // Hendra Gunawan (Geologist)
-                'job_post_category_id' => $jobPostCategories->skip(3)->first()->id,
-                'status' => 'selection',
-                'cv' => 'cv/hendra_gunawan_geologist_cv.pdf',
-                'national_identity_card' => 'ktp/hendra_gunawan_ktp.jpg'
-            ],
-            
-            // Safety Officer applications
-            [
-                'user_id' => $users[4]->id, // Bambang Sutrisno (Safety Officer)
-                'job_post_category_id' => $jobPostCategories->skip(4)->first()->id,
-                'status' => 'accepted',
-                'cv' => 'cv/bambang_sutrisno_safety_cv.pdf',
-                'national_identity_card' => 'ktp/bambang_sutrisno_ktp.jpg'
-            ],
-            
-            // IT & Technology applications
-            [
-                'user_id' => $users[2]->id, // Rizky Pratama (IoT Engineer)
-                'job_post_category_id' => $jobPostCategories->skip(5)->first()->id,
-                'status' => 'selection',
-                'cv' => 'cv/rizky_pratama_iot_engineer_cv.pdf',
-                'national_identity_card' => 'ktp/rizky_pratama_ktp.jpg'
-            ],
-            [
-                'user_id' => $users[3]->id, // Sari Wulandari (SAP Consultant)
-                'job_post_category_id' => $jobPostCategories->skip(6)->first()->id ?? $jobPostCategories->first()->id,
-                'status' => 'pending',
-                'cv' => 'cv/sari_wulandari_sap_consultant_cv.pdf',
-                'national_identity_card' => 'ktp/sari_wulandari_ktp.jpg'
-            ],
-            [
-                'user_id' => $users[9]->id, // Lisa Permata (Data Analyst)
-                'job_post_category_id' => $jobPostCategories->skip(7)->first()->id ?? $jobPostCategories->first()->id,
-                'status' => 'rejected',
-                'cv' => 'cv/lisa_permata_data_analyst_cv.pdf',
-                'national_identity_card' => 'ktp/lisa_permata_ktp.jpg'
-            ],
-            
-            // Engineering applications
-            [
-                'user_id' => $users[5]->id, // Dewi Kartika (Mechanical Engineer)
-                'job_post_category_id' => $jobPostCategories->skip(8)->first()->id ?? $jobPostCategories->first()->id,
-                'status' => 'selection',
-                'cv' => 'cv/dewi_kartika_mechanical_engineer_cv.pdf',
-                'national_identity_card' => 'ktp/dewi_kartika_ktp.jpg'
-            ],
-            
-            // Supply Chain applications
-            [
-                'user_id' => $users[6]->id, // Eko Prasetyo (Supply Chain Manager)
-                'job_post_category_id' => $jobPostCategories->skip(9)->first()->id ?? $jobPostCategories->first()->id,
-                'status' => 'pending',
-                'cv' => 'cv/eko_prasetyo_supply_chain_cv.pdf',
-                'national_identity_card' => 'ktp/eko_prasetyo_ktp.jpg'
-            ],
-            
-            // Cross applications (same person applying to multiple jobs)
-            [
-                'user_id' => $users[0]->id, // Agus Setiawan applying to another position
-                'job_post_category_id' => $jobPostCategories->skip(1)->first()->id,
-                'status' => 'pending',
-                'cv' => 'cv/agus_setiawan_field_service_cv.pdf',
-                'national_identity_card' => 'ktp/agus_setiawan_ktp.jpg'
-            ],
-            [
-                'user_id' => $users[2]->id, // Rizky Pratama applying to another position
-                'job_post_category_id' => $jobPostCategories->skip(6)->first()->id ?? $jobPostCategories->first()->id,
-                'status' => 'rejected',
-                'cv' => 'cv/rizky_pratama_erp_cv.pdf',
-                'national_identity_card' => 'ktp/rizky_pratama_ktp.jpg'
-            ]
-        ];
+            for ($i = 1; $i <= $applicantCount; $i++) {
+                $applicant = Applicant::create([
+                    'user_id' => $user->id,
+                    'job_post_category_id' => $jobPostCategories->random()->id,
+                    'status' => 'pending',
+                    'cv' => 'cv/cv_' . $user->name . '_' . $i . '.pdf',
+                    'national_identity_card' => 'ktp/ktp_' . $user->name . '_' . $i . '.pdf',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
 
-        foreach ($applications as $application) {
-            Applicant::create($application);
+                // Create exactly 3 selections for each applicant with different states
+                foreach ($stages as $index => $stage) {
+                    // Ensure different statuses for each selection
+                    
+                    Selection::create([
+                        'applicant_id' => $applicant->id,
+                        'job_post_category_id' => $applicant->job_post_category_id,
+                        'stage' => $stage,
+                        'status' => 'pending',
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+                }
+            }
         }
     }
 }
