@@ -184,12 +184,12 @@ trait UploadToS3
         
         $path = $this->uploadToS3WithOptions($file, $directory, [
             'filename' => $filename,
-            'visibility' => 'private'
+            'visibility' => 'public'
         ]);
         
         if ($path) {
             // Return full URL with base domain
-            return 'https://cloudstorage.id/' . $path;
+            return 'https://is3.cloudhost.id/utcareers/' . $path;
         }
         
         return false;

@@ -21,26 +21,35 @@ class AuthController extends Controller
         // Determine if login is email or phone
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
         
-        $credentials = [
-            $field => $login,
-            'password' => $password
-        ];
-
-        if (!auth()->attempt($credentials)) {
+        // Find user first to check if exists
+        $user = User::where($field, $login)->first();
+        
+        if (!$user) {
             return back()->withErrors([
-                'login' => 'The provided credentials do not match our records.',
+                'login' => 'User not found.',
             ]);
         }
-        
-        $user = User::where($field, $login)->first();
+
+        // Attempt authentication with found user's credentials
+        if (!auth()->attempt([$field => $login, 'password' => $password])) {
+            return back()->withErrors([
+                'login' => 'Invalid password.',
+            ]);
+        }
+
+        // Set authenticated session
         auth()->login($user);
         
+        // Redirect based on role
         if($user->role == "admin"){
             return redirect()->intended('/admin/dashboard')->with('success', 'Login successful');
         }
         if($user->role == "pelamar"){
             return redirect()->intended('/pelamar/dashboard')->with('success', 'Login successful');
         }
+
+        // Fallback redirect if no role matches
+        return redirect()->intended('/')->with('success', 'Login successful');
     }
 
     public function logout(Request $request)

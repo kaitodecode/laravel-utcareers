@@ -123,6 +123,8 @@ public function updateSelection(Request $request, Applicant $applicant, $selecti
         'status' => 'required|in:pending,in_review,accepted,rejected',
     ]);
 
+
+
     // If selection ID is 0 or selection doesn't exist, we need to determine the stage
     if (!$selection || $selection === '0') {
         // Determine which stage we're updating based on the form context
@@ -177,6 +179,11 @@ public function updateSelection(Request $request, Applicant $applicant, $selecti
     // Update the current selection
     $selectionModel->update(['status' => $request->status]);
 
+    // Check if all stages are completed and update application status
+    if ($selectionModel->stage === 'medical_checkup' && $selectionModel->status === 'accepted') {
+        $selectionModel->jobPostCategory->required_count -= 1;
+        $selectionModel->jobPostCategory->save();
+    }
     return redirect()->back()->with('success', 'Selection updated successfully');
 }
 

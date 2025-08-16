@@ -53,6 +53,7 @@ class SelectionController extends Controller
      */
     public function update(UpdateSelectionRequest $request, Selection $selection)
     {
+        dd($request->all());
         $selection->update($request->validated());
         return redirect()->back()->with('success', 'Selection updated successfully');
     }

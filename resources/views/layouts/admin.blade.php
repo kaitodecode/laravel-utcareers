@@ -108,52 +108,11 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-building me-3"></i>
-                                <span>Companies</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-briefcase me-3"></i>
-                                <span>Job Posts</span>
-                            </a>
-                        </li>
+                       
                         <li class="nav-item">
                             <a href="{{ route('applicants.index') }}" class="nav-link d-flex align-items-center">
                                 <i class="fas fa-users me-3"></i>
                                 <span>Applicants</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-clipboard-list me-3"></i>
-                                <span>Selections</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <p class="text-uppercase small fw-bold text-muted mb-3">Management</p>
-                    <ul class="nav flex-column gap-2">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-tags me-3"></i>
-                                <span>Job Categories</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-chart-bar me-3"></i>
-                                <span>Reports</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-cog me-3"></i>
-                                <span>Settings</span>
                             </a>
                         </li>
                     </ul>

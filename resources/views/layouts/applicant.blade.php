@@ -123,35 +123,8 @@
                     </ul>
                 </div>
 
-                <div class="mb-4">
-                    <p class="text-uppercase small fw-bold text-muted mb-3">Job Opportunities</p>
-                    <ul class="nav flex-column gap-2">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-search me-3"></i>
-                                <span>Job Opportunities</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            
 
-                <div class="mb-4">
-                    <p class="text-uppercase small fw-bold text-muted mb-3">Account</p>
-                    <ul class="nav flex-column gap-2">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-user me-3"></i>
-                                <span>Profile</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-cog me-3"></i>
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
 
             </nav>
 

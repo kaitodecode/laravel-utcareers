@@ -59,9 +59,9 @@
                                                     <span class="badge bg-light text-dark">{{ $application->jobPostCategory->jobCategory->name }}</span>
                                                 </td>
                                                 <td class="px-4 py-3">
-                                                    <span class="text-muted">{{ $application->created_at->format('d M Y') }}</span>
+                                                    <span class="text-muted">{{ $application->created_at ? $application->created_at->format('d M Y') : '-' }}</span>
                                                     <br>
-                                                    <small class="text-muted">{{ $application->created_at->diffForHumans() }}</small>
+                                                    <small class="text-muted">{{ $application->created_at ? $application->created_at->diffForHumans() : '-' }}</small>
                                                 </td>
                                                 <td class="px-4 py-3">
                                                     <span class="badge {{ $application->status_badge }}">

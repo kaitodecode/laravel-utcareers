@@ -123,8 +123,9 @@
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <small class="text-muted">{{ $application->created_at->format('d M Y') }}</small>
+                                                    <small class="text-muted">{{ $application->created_at }}</small>
                                                 </td>
+
                                                 <td>
                                                     @if($application->status === 'selection')
                                                         <a href="{{ route('pelamar.selection-process.detail', $application->id) }}" class="btn btn-sm btn-outline-primary">
